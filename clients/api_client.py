@@ -11,7 +11,7 @@ class APIClient:
 
         :param client: экземпляр httpx.Client для выполнения HTTP-запросов
         """
-        self.client = Client
+        self.client = client
 
     def get(self, url: URL | str, params: QueryParams | None = None) -> Response:
         """
