@@ -5,6 +5,7 @@ from clients.users.users_schema import UserSchema
 # Импортируем заранее созданный экземпляр класса Fake
 from tools.fakers import fake
 
+
 class CourseSchema(BaseModel):
     """
     Описание структуры курса.
@@ -75,3 +76,17 @@ class UpdateCourseRequestSchema(BaseModel):
     description: str | None = Field(default_factory=fake.text)
     # Добавили генерацию случайного предполагаемого времени прохождения курса
     estimated_time: str | None = Field(alias="estimatedTime", default_factory=fake.estimated_time)
+
+
+class UpdateCourseResponseSchema(BaseModel):
+    """
+    Описание структуры ответа обновления курса.
+    """
+    course: CourseSchema
+
+
+class GetCoursesResponseSchema(BaseModel):
+    """
+    Описание структуры ответа на получение списка курсов.
+    """
+    courses: list[CourseSchema]
